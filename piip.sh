@@ -2,7 +2,7 @@
 
 #Author: Lucas McQuiston
 #File  : piip.sh
-#Date  : January 1, 2017
+#Date  : January 2, 2017
 
 
 #################################piip.sh#######################################
@@ -34,7 +34,7 @@ while read -r line; do
 	#pi_connect.sh.
 	echo "ssh -q -tt pi@"${line}"" > pi_connect.sh
 
-	#A connection is attemted to be made to the raspberry pi.
+	#A connection is attempted to be made to the raspberry pi.
 	ssh -q -tt pi@"${line}" exit
 	
 	#If the connection attempt was successful, we are done.
@@ -51,11 +51,13 @@ done <<< "$NMAP_OUTPUT"
 
 
 
-ARG="-c"
+ARG="-c"	#The "connection" argument signifies that the user would like to connect to their raspberry pi.
 
+#Compare arg[1] to -c, if they match then the script will connect to the raspberry pi.
 if [ "$1" == "$ARG" ]; then
 	bash pi_connect.sh
 fi
 
 
 echo "The contents of the file \"piip\" will contain the ip address of your raspberry pi."
+echo "Run the script \"pi_connect.sh\" to connect to your raspberry pi."
