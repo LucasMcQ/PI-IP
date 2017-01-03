@@ -19,9 +19,10 @@
 #Get the current ip address of the current system you are on.
 HOST_NAME="$(hostname -I)"
 
-#This will get the ip addresses of all of the active ports, and use the cut
-#command to get to the ip adress.
-NMAP_OUTPUT="$(nmap -sn "${HOST_NAME}"/24 | grep "Nmap scan" | cut -d' ' -f5)"
+#This will get the ip addresses of all of the active ports, and use grep to get
+#the lines with the ip address, and then it uses grep again to just retrive all
+#of the ip addresses of the line.
+NMAP_OUTPUT="$(nmap -sn "${HOST_NAME}"/24 | grep "Nmap scan" | grep -o -E '[0-9.]+')"
 
 
 #This will loop through all of the ip addresses.
