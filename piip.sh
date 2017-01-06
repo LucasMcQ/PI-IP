@@ -42,6 +42,7 @@ while read -r line; do
 	if [ $? -eq 0 ]
 	then
 		echo "The IP address above were not checked."
+		echo ""
 		echo "Raspberry pi found! IP="${line}""
 		break
 	else
@@ -58,7 +59,6 @@ ARG="-c"	#The "connection" argument signifies that the user would like to connec
 if [ "$1" == "$ARG" ]; then
 	bash pi_connect.sh
 fi
-
 
 echo "The contents of the file \"piip\" will contain the ip address of your raspberry pi."
 echo "Run the script \"pi_connect.sh\" to connect to your raspberry pi."
