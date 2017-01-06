@@ -24,6 +24,7 @@ HOST_NAME="$(hostname -I)"
 #of the ip addresses of the line.
 NMAP_OUTPUT="$(nmap -sn "${HOST_NAME}"/24 | grep "Nmap scan" | grep -o -E '[0-9.]+')"
 
+CONNECTION_SUCCESS=0		#If this is equal to 1, then the raspberry pi ip address has been found.
 
 #This will loop through all of the ip addresses.
 while read -r line; do
@@ -44,6 +45,9 @@ while read -r line; do
 		echo "The IP address above were not checked."
 		echo ""
 		echo "Raspberry pi found! IP="${line}""
+		
+		CONNECTION_SUCCESS=1		#A successful connection was made with the raspberry pi.
+
 		break
 	else
 		echo "Not a raspberry pi! IP="${line}""
@@ -60,5 +64,11 @@ if [ "$1" == "$ARG" ]; then
 	bash pi_connect.sh
 fi
 
-echo "The contents of the file \"piip\" will contain the ip address of your raspberry pi."
-echo "Run the script \"pi_connect.sh\" to connect to your raspberry pi."
+
+#If the connection was established with the raspberry pi, then info about the ip adress will be printed out.
+if [ $CONNECTION_SUCCESS -eq 1 ]; then
+	echo "The contents of the file \"piip\" will contain the ip address of your raspberry pi."
+	echo "Run the script \"pi_connect.sh\" to connect to your raspberry pi."
+else
+	echo "Connection was not established with the raspberry pi."
+fi
