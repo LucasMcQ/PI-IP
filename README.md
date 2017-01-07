@@ -7,6 +7,11 @@ it to work.
 This script should work if you only have one device in your home that you can ssh into. I made this script with the intention of just connecting to the
 raspberry pi, but I would think it would work for any device you are able to ssh into.
 
+Must have installed:
+
+nmap
+
+
 To run piip.sh:
 
 Option #1: This will create a file named "piip" that will have the ip of your raspberry pi, and it will also create a file that
