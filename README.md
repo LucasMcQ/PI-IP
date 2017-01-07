@@ -16,7 +16,7 @@ To run:
 bash piip.sh [optional-name of your raspberry pi]
 
 
-Option #2: This is the same as option #1 except it will automaticallly connect you to your raspberry pi.
+Option #2: This is the same as option #1 except it will automatically connect you to your raspberry pi.
 
 To run:
 bash piip.sh -c [optional-name of your raspberry pi]
