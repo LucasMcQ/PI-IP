@@ -1,15 +1,20 @@
 # PI-IP
 A shell script that will find the ip address of your raspberry pi, and save it to a file. The script has the option to connect to the raspberry pi.
-If the name to login to your raspberry pi is diffrent than "pi", then you are able to specify the name when you run the script. This script probably
-will not work as desired if there is more than one device in your home that you can ssh into. If it does work, it probably will not work as I intended
-it to work.
+If the hostname OR the username of your pi is diffrent than the default (HOSTNAME=raspberrypi and USERNAME=pi) then you must specify that when the
+script is ran.
 
-This script should work if you only have one device in your home that you can ssh into. I made this script with the intention of just connecting to the
-raspberry pi, but I would think it would work for any device you are able to ssh into.
+example: bash piip.sh [MY HOSTNAME] [MY USERNAME]
 
-Must have installed:
+The username must follow the hostname inorder to work. Even if only one of either
+the hostname or the username is diffrent than the default, then you must specify both of them in the above order.
 
-nmap
+If your raspberry pi has the default names (HOSTNAME=raspberrypi and USERNAME=pi) then you may run it like:
+
+bash piip.sh ...or... bash piip.sh -c
+
+The -c flag will connect you to your raspberry pi via ssh.
+
+Must have installed: ping
 
 
 To run piip.sh:
@@ -18,10 +23,10 @@ Option #1: This will create a file named "piip" that will have the ip of your ra
 will connect you to your raspberry pi.
 
 To run:
-bash piip.sh [optional-name of your raspberry pi]
+bash piip.sh [[optional-hostname of your raspberry pi] [MANDATORY-username of your raspberry pi]]
 
 
 Option #2: This is the same as option #1 except it will automatically connect you to your raspberry pi.
 
 To run:
-bash piip.sh -c [optional-name of your raspberry pi]
+bash piip.sh -c [[optional-hostname of your raspberry pi] [MANDATORY-username of your raspberry pi]]
